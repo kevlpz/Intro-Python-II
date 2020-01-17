@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -36,8 +37,10 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
-
+finished = False
 # Make a new player object that is currently in the 'outside' room.
+joe = Player(room['outside'])
+print(joe.room.description)
 
 # Write a loop that:
 #
@@ -49,3 +52,16 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while not finished:
+    command = input("-> ")
+    if command == 'q':
+        finished = True
+    if command.lower() == 'north':
+        joe.move('north')
+    if command.lower() == 'south':
+        joe.move('south')
+    if command.lower() == 'west':
+        joe.move('west')
+    if command.lower() == 'east':
+        joe.move('east')
